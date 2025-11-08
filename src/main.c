@@ -1,11 +1,26 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netinet/ip.h>
-#include <string.h>
-#include <errno.h>
 #include <unistd.h>
 
-int main() {
+int nw_strlen(char *str)
+{
+    int i;
+    i=0;
+    while(str[i])
+        i++;
+    return i;
+}
+
+void nw_put(char *str)
+{
+    write(STDOUT_FILENO,str,nw_strlen(str));
+}
+
+
+
+int main() 
+{
+    char *str;
+    str="Redis";
+    nw_put(str);
+    
+    return 0;
 }
